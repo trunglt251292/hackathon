@@ -75,3 +75,22 @@ export async function getTransactionByShop(req,res) {
     return res.status(err.status).json(err);
   }
 }
+
+export async function getTransactionByType(req,res) {
+  try{
+    let page = req.query.page || 1;
+    let limit = req.query.limit || 10;
+    let skip = (page - 1)*limit;
+    let type = req.params.type_transaction;
+    let rs = await Transaction_Service.getTransactionByType({type, skip, limit});
+    return res.json({
+      total_page:Math.ceil(rs[0]/limit),
+      page:page,
+      limit:limit,
+      success:true,
+      data:rs[1]
+    })
+  }catch (err){
+    return res.status(err.status).json(err);
+  }
+}

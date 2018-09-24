@@ -11,6 +11,8 @@ router.route('/delete')
   .delete(Transaction_Controller.deleteTransaction);
 router.route('/:transactionid')
   .put(Transaction_Controller.updateStatus);
+router.route('/:type_transaction') //'know' or 'eth'
+  .get(Transaction_Controller.getTransactionByType);
 
 
 export default router;

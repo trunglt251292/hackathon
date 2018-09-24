@@ -61,6 +61,18 @@ export async function getTransactionByStatus(options) {
   }
 }
 
+export async function getTransactionByType(options) {
+  try{
+    let transactions = await Transaction.find({type_transaction:options.type}).sort({createAt:-1}).skip(options.skip).limit(options.limit).lean();
+    let count = await Transaction.count({type_transaction:options.type});
+    let data = await getMetaData(transactions);
+    return [count,data];
+  }catch (err){
+    console.log('err deleteTransactions: ',err);
+    return Promise.reject({status:500, success:false, error:'Internal server error!'});
+  }
+}
+
 export async function getMetaData(transactions) {
   try{
     let promise = transactions.map(async e =>{

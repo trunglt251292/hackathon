@@ -7,6 +7,7 @@ const modelProduct = new Schema({
   image:{type:String, required:true},
   createAt:{type:Date, default:Date.now()},
   price:{type:Number, required:true},
+  type:{type:String, enum:['know','eth'],default:'know'},
   quantity:{type:Number, required:true}
 });
 

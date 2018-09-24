@@ -3,6 +3,7 @@
  */
 import express from "express";
 import bodyParser from "body-parser";
+import cors from 'cors';
 import fs from "fs";
 import cookieParser from "cookie-parser";
 import mongoose from "mongoose";
@@ -36,6 +37,7 @@ mongoose.connect(configs.mongoURL,(err)=>{
 /**
  * Use, Set
  */
+app.use(cors());
 app.use(morgan("dev"));
 app.set("views",path.join(__dirname, "views"));
 app.set("view engine","ejs");

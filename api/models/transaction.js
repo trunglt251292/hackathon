@@ -7,7 +7,7 @@ const modelTransaction = new Schema({
   nameBuy:{type:String, required:true},
   quantity:{type:Number, required:true},
   total_price:{type:Number, required:true},
-  type_transaction:{type:String, enum:['normal','security'],required:true, default:'normal'},
+  type_transaction:{type:String, enum:['know','eth'],required:true, default:'know'},
   numberPhone:{type:String, required:true},
   transactionId:{type:String, required:true},
   address:{type:String, required:true},
